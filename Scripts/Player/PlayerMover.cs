@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 8f;
-    [SerializeField] private float _jumpForce = 12f;
+    [SerializeField] private float _jumpForce = 15f;
     [SerializeField] private float _gravityScale = 5f;
     [SerializeField] private GroundChecker _groundChecker;
 
