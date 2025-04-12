@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    /*public event Action<float> OnCollected;*/
+    [SerializeField] Player _player;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+ /*       OnCollected?.Invoke(_value);*/
+        if (other.TryGetComponent(out Coin coin))
+        {
+            coin.Collect();
+            _player.AddCoin(coin.Value);
+        }
     }
 }

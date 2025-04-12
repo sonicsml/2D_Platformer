@@ -6,7 +6,8 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _jumpForce = 15f;
-    [SerializeField] private float _gravityScale = 5f;
+    [SerializeField] private float _gravityScale = 1f;
+    [SerializeField] private float _upgradeGravityScale = 5f;
     [SerializeField] private GroundChecker _groundChecker;
 
     private SpriteRenderer spriteRenderer;
@@ -28,10 +29,19 @@ public class PlayerMover : MonoBehaviour
         Move();
         Rotate();
 
-        if (Input.GetKeyDown(KeyCode.Space) && _groundChecker.IsGrounded)
+/*        if (Input.GetKeyDown(KeyCode.Space) && _groundChecker.IsGrounded)
         {
             Jump();
         }
+
+        if (!_groundChecker.IsGrounded && _rigidbody2D.linearVelocity.y < 0)
+        {
+            _rigidbody2D.gravityScale = _upgradeGravityScale;
+        }
+        else
+        {
+            _rigidbody2D.gravityScale = _gravityScale;
+        }*/
     }
 
     private void Move()
