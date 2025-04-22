@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
@@ -30,8 +29,6 @@ public class EnemyMover : MonoBehaviour
     {
         if (CheckWallAhaed() || _groundChecker.CheckGroundAhead(_groundLayer))
         {
-            Debug.Log($"{CheckWallAhaed()} - стена");
-            Debug.Log($"{_groundChecker.CheckGroundAhead(_groundLayer)} - земля");
             Rotate();
         }
 
@@ -71,7 +68,6 @@ public class EnemyMover : MonoBehaviour
     private void Rotate()
     {
         _movingLeft = !_movingLeft;
-        
         transform.rotation = _movingLeft ? Quaternion.Euler(0,_rotationOne,0) : Quaternion.Euler(0, _rotationtwo, 0);
     }
 }

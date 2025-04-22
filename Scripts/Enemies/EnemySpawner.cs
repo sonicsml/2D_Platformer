@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy(_spawnPoints[i].position);
         }
     }
+
     private void SpawnEnemy(Vector3 position)
     {
         Instantiate(_enemyPrefab, position, Quaternion.identity);
