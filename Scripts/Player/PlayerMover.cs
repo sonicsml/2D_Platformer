@@ -11,7 +11,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _upgradeGravityScale = 3f;
 
     [SerializeField] private GroundChecker _groundChecker;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerAnimator _playerAnimator;
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
@@ -53,8 +53,7 @@ public class PlayerMover : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
         bool isIdle = Mathf.Abs(moveInput) < 0.1f && _groundChecker.IsGrounded;
 
-        _animator.SetBool("Idle", isIdle);
-        Debug.Log($"Idle() Idle {moveInput}, isIdle {isIdle}");
+        _playerAnimator.IdleAnimation(isIdle);
     }
 
     private void Move()
@@ -62,9 +61,7 @@ public class PlayerMover : MonoBehaviour
         float moveInput = Input.GetAxisRaw("Horizontal");
         bool isMoving = Math.Abs(moveInput) > 0.1f;
 
-        Debug.Log($"Move() move {moveInput}, isMoving {isMoving}");
-
-        _animator.SetBool("Moving", isMoving);
+        _playerAnimator.MoveAnimation(isMoving);
         _moveVector = new Vector2(moveInput * _speed, 0f);
         transform.Translate(_moveVector * Time.deltaTime);
     }

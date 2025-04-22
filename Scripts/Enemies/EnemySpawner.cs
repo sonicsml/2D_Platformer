@@ -1,16 +1,28 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private float _countSpawnEnemy = 3;
+
+    private void Start()
     {
-        
+        StartCoroutine(SpawnEnemies());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnEnemies()
     {
-        
+        yield return null;
+
+        for (var i = 0; i < _countSpawnEnemy; i++)
+        {
+            SpawnEnemy(_spawnPoints[i].position);
+        }
+    }
+    private void SpawnEnemy(Vector3 position)
+    {
+        Instantiate(_enemyPrefab, position, Quaternion.identity);
     }
 }

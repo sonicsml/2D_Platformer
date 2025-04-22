@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Animator _animator;
+
+    public void IdleAnimation(bool isIdle)
     {
-        
+        _animator.SetBool("Idle", isIdle);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveAnimation(bool isMoving)
     {
-        
+        _animator.SetBool("Moving", isMoving);
     }
 }
