@@ -5,25 +5,27 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
+    private const float RotationOne = 180f;
+    private const float Rotationtwo = 0f;
+
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _jumpForce = 11f;
     [SerializeField] private float _gravityScale = 2f;
     [SerializeField] private float _upgradeGravityScale = 3f;
 
-    [SerializeField] private Transform _visualTransform;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _moveVector;
-
-    private Quaternion _facingRight = Quaternion.identity;
-    private Quaternion _facingLeft = Quaternion.Euler(0, 180, 0);
+    private InputReader _inputReader;
+    private bool _movingLeft;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _inputReader = GetComponent<InputReader>();
     }
 
     private void Start()
@@ -37,11 +39,16 @@ public class PlayerMover : MonoBehaviour
         Move();
         Rotate();
 
-        if (Input.GetKeyDown(KeyCode.Space) && _groundChecker.IsGrounded)
+        if (_inputReader.IsJumpPressed() && _groundChecker.IsGrounded)
         {
             Jump();
         }
 
+        UpdateGravity();
+    }
+
+    private void UpdateGravity()
+    {
         if (_groundChecker.IsGrounded == false && _rigidbody2D.linearVelocity.y < 0)
         {
             _rigidbody2D.gravityScale = _upgradeGravityScale;
@@ -54,42 +61,38 @@ public class PlayerMover : MonoBehaviour
 
     private void Idle()
     {
-        float moveInput = Input.GetAxis("Horizontal");
+        float moveInput = _inputReader.GetHorizontalInput();
         bool isIdle = Mathf.Abs(moveInput) < 0.1f && _groundChecker.IsGrounded;
 
         _playerAnimator.IdleAnimation(isIdle);
     }
-
-    private void Move()
-    {
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        bool isMoving = Math.Abs(moveInput) > 0.1f;
-
-        _playerAnimator.MoveAnimation(isMoving);
-        _moveVector = new Vector2(moveInput * _speed, 0f);
-        transform.Translate(_moveVector * Time.deltaTime);
-    }
-
     private void Jump()
     {
         _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
     }
 
+    private void Move()
+    {
+        float moveInput = _inputReader.GetHorizontalInput();
+        bool isMoving = Math.Abs(moveInput) > 0.1f;
+
+        _playerAnimator.MoveAnimation(isMoving);
+        _moveVector = new Vector2(moveInput * _speed, 0f);
+        transform.position += (Vector3) _inputReader.Direction * (_speed * Time.deltaTime);
+    }
+
     private void Rotate()
     {
-        float moveInput = Input.GetAxisRaw("Horizontal");
+        Vector2 moveInput = _inputReader.Direction;
 
-        /*        if (moveInput != 0)
-                {
-                    _spriteRenderer.flipX = moveInput < 0;
-                }*/
-        if (moveInput > 0.1f)
+        if (moveInput.x > 0) 
         {
-            _visualTransform.localRotation = _facingRight;
-        }
-        else if (moveInput < -0.1f)
+            transform.rotation = Quaternion.Euler(Vector3.zero);
+        } 
+        else
+        if (moveInput.x < 0)
         {
-            _visualTransform.localRotation = _facingLeft;
+            transform.rotation = Quaternion.Euler(0, RotationOne, 0);
         }
     }
 }
