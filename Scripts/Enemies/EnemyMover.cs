@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private float _speed = 2f;
     [SerializeField] private EnemyGroundChecker _groundChecker;
+    [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private LayerMask _groundLayer;
-    /*    [SerializeField] private EnemyAnimator _enemyAnimator;*/
+
+    [SerializeField] private float _speed = 2f;
     [SerializeField] private float _rayDistance = 0.55f;
     [SerializeField] private float _rotationOne = 180f;
     [SerializeField] private float _rotationtwo = 0f;
 
     private SpriteRenderer _spriteRenderer;
 
-    private bool _movingLeft = true;
+    private bool _movingLeft;
+    private bool _isMoving;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Patrol()
     {
-        if (CheckWallAhaed() || _groundChecker.CheckGroundAhead(_groundLayer))
+        if (WallAhaed() || _groundChecker.GroundAhead(_groundLayer))
         {
             Rotate();
         }
@@ -35,7 +37,7 @@ public class EnemyMover : MonoBehaviour
         Move();
     }
 
-    private bool CheckWallAhaed()
+    private bool WallAhaed()
     {
         Vector2 direction;
 
@@ -62,6 +64,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Move()
     {
+        _enemyAnimator.IdleAnimation(_isMoving);
         transform.Translate(_speed * Vector3.left * Time.deltaTime);
     }
 

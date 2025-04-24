@@ -17,6 +17,9 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _moveVector;
 
+    private Quaternion _facingRight = Quaternion.identity;
+    private Quaternion _facingLeft = Quaternion.Euler(0, 180, 0);
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -75,9 +78,15 @@ public class PlayerMover : MonoBehaviour
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
 
-        if (moveInput != 0)
+        /*if (moveInput > 0.1f)
         {
-            spriteRenderer.flipX = moveInput < 0;
-        }
+            transform.rotation = _facingRight;*/
+        /*spriteRenderer.flipX = moveInput < 0;*/
+        /*transform.rotation = _movingLeft ? Quaternion.Euler(0, _rotationOne, 0) : Quaternion.Euler(0, _rotationtwo, 0);*/
+        /*transform.rotation = Quaternion.Euler(0, 180, 0);*/
+        /*} else if (moveInput < -0.1f)
+        {
+            transform.rotation = _facingLeft;
+        }*/
     }
 }

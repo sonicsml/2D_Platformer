@@ -13,4 +13,14 @@ public class PlayerAnimator : MonoBehaviour
     {
         _animator.SetBool("Moving", isMoving);
     }
+
+    public void DieAnimation(bool isDie)
+    {
+        _animator.SetBool("Die", isDie);
+    }
+
+    public void TakeDamageAnimator(bool isTakeDamage)
+    {
+        _animator.SetBool("TakeDamage", isTakeDamage);
+    }
 }
