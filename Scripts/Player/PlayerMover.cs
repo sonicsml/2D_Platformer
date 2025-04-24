@@ -10,10 +10,11 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _gravityScale = 2f;
     [SerializeField] private float _upgradeGravityScale = 3f;
 
+    [SerializeField] private Transform _visualTransform;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _playerAnimator;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _moveVector;
 
@@ -22,7 +23,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -78,15 +79,17 @@ public class PlayerMover : MonoBehaviour
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
 
-        /*if (moveInput > 0.1f)
+        /*        if (moveInput != 0)
+                {
+                    _spriteRenderer.flipX = moveInput < 0;
+                }*/
+        if (moveInput > 0.1f)
         {
-            transform.rotation = _facingRight;*/
-        /*spriteRenderer.flipX = moveInput < 0;*/
-        /*transform.rotation = _movingLeft ? Quaternion.Euler(0, _rotationOne, 0) : Quaternion.Euler(0, _rotationtwo, 0);*/
-        /*transform.rotation = Quaternion.Euler(0, 180, 0);*/
-        /*} else if (moveInput < -0.1f)
+            _visualTransform.localRotation = _facingRight;
+        }
+        else if (moveInput < -0.1f)
         {
-            transform.rotation = _facingLeft;
-        }*/
+            _visualTransform.localRotation = _facingLeft;
+        }
     }
 }
