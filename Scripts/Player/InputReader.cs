@@ -12,8 +12,6 @@ public class InputReader : MonoBehaviour
         Direction = new Vector2(GetHorizontalInput(), 0);
     }
 
-/*public float GetHorizontalInputRaw() => Input.GetAxisRaw(HorizontalAxis);*/
-
     public float GetHorizontalInput()
     {
         return Input.GetAxis(HorizontalAxis);
