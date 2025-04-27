@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(InputReader))]
 public class PlayerMover : MonoBehaviour
 {
     private const float RotationOne = 180f;
@@ -11,7 +10,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _jumpForce = 11f;
     [SerializeField] private float _gravityScale = 2f;
-    [SerializeField] private float _upgradeGravityScale = 3f;
+    [SerializeField] private float _increaseGravity = 3f;
 
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _playerAnimator;
@@ -26,13 +25,8 @@ public class PlayerMover : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _inputReader = GetComponent<InputReader>();
-    }
-
-    private void Start()
-    {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-
     private void Update()
     {
         Idle();
@@ -51,7 +45,7 @@ public class PlayerMover : MonoBehaviour
     {
         if (_groundChecker.IsGrounded == false && _rigidbody2D.linearVelocity.y < 0)
         {
-            _rigidbody2D.gravityScale = _upgradeGravityScale;
+            _rigidbody2D.gravityScale = _increaseGravity;
         }
         else
         {
@@ -62,7 +56,7 @@ public class PlayerMover : MonoBehaviour
     private void Idle()
     {
         float moveInput = _inputReader.GetHorizontalInput();
-        bool isIdle = Mathf.Abs(moveInput) < 0.1f && _groundChecker.IsGrounded;
+        bool isIdle = Mathf.Abs(moveInput) < 0 && _groundChecker.IsGrounded;
 
         _playerAnimator.IdleAnimation(isIdle);
     }
@@ -74,7 +68,7 @@ public class PlayerMover : MonoBehaviour
     private void Move()
     {
         float moveInput = _inputReader.GetHorizontalInput();
-        bool isMoving = Math.Abs(moveInput) > 0.1f;
+        bool isMoving = Math.Abs(moveInput) > 0;
 
         _playerAnimator.MoveAnimation(isMoving);
         _moveVector = new Vector2(moveInput * _speed, 0f);
