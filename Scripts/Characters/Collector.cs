@@ -1,14 +1,17 @@
-using Unity.Properties;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Collector : MonoBehaviour
 {
-    private float _coins = 0;
+    [SerializeField] Player _player;
 
-    public void AddCoin(float value)
+/*    private void OnTriggerEnter2D(Collider2D other)
     {
-        _coins += value;
-    }
+        if (other.TryGetComponent(out Coin coin))
+        {
+            coin.Collect();
+            _player.AddCoin(coin.Value);
+        }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D other)
     {
