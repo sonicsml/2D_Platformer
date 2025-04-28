@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MedKit : MonoBehaviour
+public class MedKit : MonoBehaviour, ICollectible
 {
     [SerializeField] private AudioClip _collectSound;
     [field: SerializeField] public float Value { get; private set; } = 1f;

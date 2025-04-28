@@ -9,13 +9,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        SpawnEnemies();
     }
 
-    private IEnumerator SpawnEnemies()
+    private void SpawnEnemies()
     {
-        yield return null;
-
         for (var i = 0; i < _countSpawnEnemy; i++)
         {
             SpawnEnemy(_spawnPoints[i].position);

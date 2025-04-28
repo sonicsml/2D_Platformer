@@ -9,13 +9,11 @@ public class CoinSpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnCoins());
+        SpawnCoins();
     }
 
-    private IEnumerator SpawnCoins()
+    private void SpawnCoins()
     {
-        yield return null;
-
         for (var i = 0; i < _countSpawnCoins; i++) 
         {
             SpawnCoin(_spawnPoints[i].position);

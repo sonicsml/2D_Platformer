@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, ICollectible
 {
     [SerializeField] private AudioClip _collectSound;
-
     [field: SerializeField] public float Value { get; private set; } = 1f;
 
     public void Accept(IVisitor visitor)
