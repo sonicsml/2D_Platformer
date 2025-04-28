@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth = 3;
+    [SerializeField] private float _maxHealth;
     [SerializeField] private float _invulnerabilityTime = 1f;
 
-    [SerializeField] private PlayerAnimator _animator;
+    /*[SerializeField] private PlayerAnimator _animator;*/
     [SerializeField] private AudioClip _damageSound;
 
     private float _currentHeadth;
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         }
 
         _currentHeadth -= damage;
-        _animator.TakeDamageAnimator(_isTakeDamage);
+        /*_animator.TakeDamageAnimator(_isTakeDamage);*/
         AudioSource.PlayClipAtPoint(_damageSound, transform.position);
         
         if (_currentHeadth <= 0)
@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        _animator.DieAnimation(_isDie);
+        /*_animator.DieAnimation(_isDie);*/
         Destroy(gameObject);
     }
 }

@@ -6,6 +6,6 @@ public class EnemyAnimator : MonoBehaviour
 
     public void IdleAnimation(bool isIdle)
     {
-        _animator.SetBool("Idle", isIdle);
+        _animator.SetBool(Params.Idle, isIdle);
     }
 }

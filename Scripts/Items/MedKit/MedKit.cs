@@ -8,10 +8,7 @@ public class MedKit : MonoBehaviour, ICollectible
     public void Accept(IVisitor visitor)
     {
         visitor.Visit(this);
-    }
 
-    public void Collect()
-    {
         if (_collectSound != null)
         {
             AudioSource.PlayClipAtPoint(_collectSound, transform.position);

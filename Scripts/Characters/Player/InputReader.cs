@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class InputReader : MonoBehaviour
 {
-    private const string HorizontalAxis = "Horizontal";
+    public const string Horizontal = "Horizontal";
+
     private const KeyCode JumpButton = KeyCode.Space;
 
     public Vector2 Direction { get; private set; }
@@ -14,7 +15,7 @@ public class InputReader : MonoBehaviour
 
     public float GetHorizontalInput()
     {
-        return Input.GetAxis(HorizontalAxis);
+        return Input.GetAxis(Horizontal);
     }
 
     public bool IsJumpPressed()
