@@ -24,4 +24,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Instantiate(_enemyPrefab, position, Quaternion.identity);
     }
+
+    private void Destroy()
+    {
+        Debug.Log($"{gameObject} уничтожен");
+    }
 }

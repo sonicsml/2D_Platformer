@@ -6,12 +6,12 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private LayerMask _groundLayer;
 
-    [SerializeField] private float _speed = 2f;
     [SerializeField] private float _rayDistance = 0.55f;
-    [SerializeField] private float _rotationOne = 180f;
-    [SerializeField] private float _rotationtwo = 0f;
+    [SerializeField] private float _speed = 2f;
+    [SerializeField] private Flip _flip;
 
     private SpriteRenderer _spriteRenderer;
+    private InputReader _inputReader;
 
     private bool _movingLeft;
     private bool _isMoving;
@@ -70,7 +70,10 @@ public class EnemyMover : MonoBehaviour
 
     private void Rotate()
     {
-        _movingLeft = !_movingLeft;
-        transform.rotation = _movingLeft ? Quaternion.Euler(0,_rotationOne,0) : Quaternion.Euler(0, _rotationtwo, 0);
+        Vector3 forwardDirection = transform.forward;
+
+        _flip.Rotate(forwardDirection.z);
+
+        transform.forward = -transform.forward;
     }
 }

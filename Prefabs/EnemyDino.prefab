@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8908206843960337594}
   - component: {fileID: 2312206482297284337}
   - component: {fileID: 8213547648551417009}
+  - component: {fileID: 2289878128410921939}
   m_Layer: 0
   m_Name: EnemyDino
   m_TagString: Untagged
@@ -127,7 +128,7 @@ MonoBehaviour:
   _speed: 2
   _rayDistance: 1
   _rotationOne: 0
-  _rotationtwo: 180
+  _flip: {fileID: 2289878128410921939}
 --- !u!50 &-1258871729484114346
 Rigidbody2D:
   serializedVersion: 5
@@ -228,7 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 3
   _invulnerabilityTime: 1
-  _animator: {fileID: 0}
   _damageSound: {fileID: 0}
 --- !u!114 &8213547648551417009
 MonoBehaviour:
@@ -243,6 +243,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8908206843960337594}
+--- !u!114 &2289878128410921939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154363574729091616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8278475207125047880b991a91d6490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2325846716462388302
 GameObject:
   m_ObjectHideFlags: 0

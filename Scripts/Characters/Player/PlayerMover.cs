@@ -4,9 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(InputReader))]
 public class PlayerMover : MonoBehaviour
 {
-    private const float RotationOne = 180f;
-    private const float Rotationtwo = 0f;
-
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _jumpForce = 11f;
     [SerializeField] private float _gravityScale = 2f;
@@ -14,12 +11,12 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _playerAnimator;
+    [SerializeField] private Flip _flip;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _moveVector;
     private InputReader _inputReader;
-    private bool _movingLeft;
 
     private void Awake()
     {
@@ -72,21 +69,13 @@ public class PlayerMover : MonoBehaviour
 
         _playerAnimator.MoveAnimation(isMoving);
         _moveVector = new Vector2(moveInput * _speed, 0f);
-        transform.position += (Vector3) _inputReader.Direction * (_speed * Time.deltaTime);
+        transform.position += (Vector3)_inputReader.Direction * (_speed * Time.deltaTime);
     }
 
     private void Rotate()
     {
-        Vector2 moveInput = _inputReader.Direction;
+        Vector3 moveInput = _inputReader.Direction;
 
-        if (moveInput.x > 0) 
-        {
-            transform.rotation = Quaternion.Euler(Vector3.zero);
-        } 
-        else
-        if (moveInput.x < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, RotationOne, 0);
-        }
+        _flip.Rotate(moveInput.x);
     }
 }
