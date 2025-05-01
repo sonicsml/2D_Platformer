@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Flip : MonoBehaviour
+public class Turn : MonoBehaviour
 {
     private const float RotationOne = 180f;
 

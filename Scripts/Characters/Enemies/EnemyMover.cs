@@ -8,9 +8,8 @@ public class EnemyMover : MonoBehaviour
 
     [SerializeField] private float _rayDistance = 0.55f;
     [SerializeField] private float _speed = 2f;
-    [SerializeField] private Flip _flip;
+    [SerializeField] private Turn _flip;
 
-    private SpriteRenderer _spriteRenderer;
     private InputReader _inputReader;
 
     private bool _movingLeft;
@@ -18,7 +17,6 @@ public class EnemyMover : MonoBehaviour
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         Rotate();
     }
 

@@ -14,21 +14,21 @@ public class PlayerAnimator : MonoBehaviour
 
     public void IdleAnimation(bool isIdle)
     {
-        _animator.SetBool(Params.Idle, isIdle);
+        _animator.SetBool(ParamsMover.Idle, isIdle);
     }
 
     public void MoveAnimation(bool isMoving)
     {
-        _animator.SetBool(Params.Moving, isMoving);
+        _animator.SetBool(ParamsMover.Moving, isMoving);
     }
 
     public void DieAnimation(bool isDie)
     {
-        _animator.SetBool(Params.Die, isDie);
+        _animator.SetBool(ParamsMover.Die, isDie);
     }
 
     public void TakeDamageAnimator(bool isTakeDamage)
     {
-        _animator.SetBool(Params.TakeDamage, isTakeDamage);
+        _animator.SetBool(ParamsMover.TakeDamage, isTakeDamage);
     }
 }

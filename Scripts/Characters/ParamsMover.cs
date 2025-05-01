@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Params : MonoBehaviour
+public class ParamsMover
 {
     public static readonly int Idle = Animator.StringToHash(nameof(Idle));
     public static readonly int Moving = Animator.StringToHash(nameof(Moving));

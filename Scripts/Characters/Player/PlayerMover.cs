@@ -11,7 +11,7 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _playerAnimator;
-    [SerializeField] private Flip _flip;
+    [SerializeField] private Turn _flip;
 
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;

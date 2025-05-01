@@ -6,13 +6,13 @@ public class Collector : MonoBehaviour, IVisitor
 
     public void Visit(MedKit medkit)
     {
-        /*_player.Healing(medkit.Value);*/
+        _player.Healing(medkit.Value);
         Debug.Log($"Аптечка собрана.");
     }
 
     public void Visit(Coin coin)
     {
-        /*_player.AddCoin(coin.Value);*/
+        _player.AddCoin(coin.Value);
         Debug.Log($"Собран алмаз.");
     }
 
