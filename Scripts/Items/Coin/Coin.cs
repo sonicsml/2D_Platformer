@@ -13,7 +13,5 @@ public class Coin : MonoBehaviour, ICollectible
         {
             AudioSource.PlayClipAtPoint(_collectSound, transform.position);
         }
-
-        Destroy(gameObject);
     }
 }

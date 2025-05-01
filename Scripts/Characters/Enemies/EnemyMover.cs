@@ -2,17 +2,12 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private EnemyGroundChecker _groundChecker;
     [SerializeField] private EnemyAnimator _enemyAnimator;
-    [SerializeField] private LayerMask _groundLayer;
 
-    [SerializeField] private float _rayDistance = 0.55f;
     [SerializeField] private float _speed = 2f;
     [SerializeField] private Turn _flip;
+    [SerializeField] private Patroller _patroller;
 
-    private InputReader _inputReader;
-
-    private bool _movingLeft;
     private bool _isMoving;
 
     private void Awake()
@@ -22,51 +17,16 @@ public class EnemyMover : MonoBehaviour
 
     private void Update()
     {
-        Patrol();
+        _patroller.Patrol();
     }
 
-    private void Patrol()
-    {
-        if (WallAhaed() || _groundChecker.GroundAhead(_groundLayer))
-        {
-            Rotate();
-        }
-
-        Move();
-    }
-
-    private bool WallAhaed()
-    {
-        Vector2 direction;
-
-        if (_movingLeft)
-        {
-            direction = Vector2.left;
-        }
-        else
-        {
-            direction = Vector2.right;
-        }
-
-        Debug.DrawRay(transform.position, direction, Color.blue);
-
-        RaycastHit2D wallHit = Physics2D.Raycast(
-            transform.position,
-            direction,
-            _rayDistance,
-            _groundLayer
-        );
-
-        return wallHit.collider != null;
-    }
-
-    private void Move()
+    public void Move()
     {
         _enemyAnimator.IdleAnimation(_isMoving);
         transform.Translate(_speed * Vector3.left * Time.deltaTime);
     }
 
-    private void Rotate()
+    public void Rotate()
     {
         Vector3 forwardDirection = transform.forward;
 

@@ -13,7 +13,5 @@ public class MedKit : MonoBehaviour, ICollectible
         {
             AudioSource.PlayClipAtPoint(_collectSound, transform.position);
         }
-
-        Destroy(gameObject);
     }
 }
