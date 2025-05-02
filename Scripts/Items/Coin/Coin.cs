@@ -1,17 +1,10 @@
-using UnityEngine;
+using System;
 
-public class Coin : MonoBehaviour, ICollectible
+public class Coin : BaseItem
 {
-    [SerializeField] private AudioClip _collectSound;
-    [field: SerializeField] public float Value { get; private set; } = 1f;
+    public static Action<float> OnItemCollected;
 
-    public void Accept(IVisitor visitor)
-    {
-        visitor.Visit(this);
+    public void Pickup() {}
 
-        if (_collectSound != null)
-        {
-            AudioSource.PlayClipAtPoint(_collectSound, transform.position);
-        }
-    }
+    public override void Use() {}
 }

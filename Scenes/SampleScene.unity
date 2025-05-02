@@ -222,8 +222,8 @@ MonoBehaviour:
   - {fileID: 1226928998}
   - {fileID: 2051976732}
   - {fileID: 1061252586}
-  _coinPrefab: {fileID: 4162515200808330838, guid: 1f1b2564352f2764eb5e0ec0dfdb8ce1, type: 3}
-  _countSpawnCoins: 4
+  _prefabItem: {fileID: 4162515200808330838, guid: 1f1b2564352f2764eb5e0ec0dfdb8ce1, type: 3}
+  _countItemsSpawn: 3
 --- !u!1 &107745735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5130,7 +5130,6 @@ GameObject:
   - component: {fileID: 527245262}
   - component: {fileID: 527245263}
   - component: {fileID: 527245264}
-  - component: {fileID: 527245265}
   - component: {fileID: 527245266}
   m_Layer: 0
   m_Name: Player
@@ -5286,6 +5285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168d9b277fbfda840b7d9cb6387f3d6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 3
 --- !u!95 &527245260
 Animator:
   serializedVersion: 7
@@ -5365,21 +5365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 527245258}
---- !u!114 &527245265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527245252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d52dea8d17c84c45a8b6dcf1a484ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 3
-  _invulnerabilityTime: 1
-  _damageSound: {fileID: 0}
 --- !u!114 &527245266
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,20 +1,17 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Collector : MonoBehaviour, IVisitor
 {
-    [SerializeField] Player _player;
+    [SerializeField] private Player _player;
 
-    public void Visit(MedKit medkit)
-    { 
-        _player.Healing(medkit.Value);
-        Debug.Log($"Аптечка собрана.");
+    public void Awake()
+    {
+        _player = GetComponent<Player>();
     }
 
-    public void Visit(Coin coin)
+    public void Visit(IItem item)
     {
-        _player.AddCoin(coin.Value);
-        Debug.Log($"Собран алмаз.");
+        Debug.Log($"Предмет подобран.");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

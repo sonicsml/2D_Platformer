@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
-
     [SerializeField] private float _speed = 2f;
     [SerializeField] private Rotator _flip;
     [SerializeField] private Patroller _patroller;

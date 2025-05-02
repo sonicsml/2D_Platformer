@@ -2,9 +2,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float _coins = 0;
-    private Health _maxHealth;
+    [SerializeField] private float _maxHealth = 3;
 
-    public void Healing(float amount) => Debug.Log($"Игрок излечен на: +{amount}");
-    public void AddCoin(float value) => Debug.Log($"Собрано алмазов: +{value}");
+    private float _currentHealth;
+    private float _coins = 0;
+
+    private void OnEnable()
+    {
+        Coin.OnItemCollected += HandleCoinCollected;
+        MedKit.OnItemCollected += HandleMedkitCollected;
+    }
+
+    private void OnDisable()
+    {
+        Coin.OnItemCollected -= HandleCoinCollected;
+        MedKit.OnItemCollected += HandleMedkitCollected;
+    }
+
+    private void HandleMedkitCollected(float medkitValue)
+    {
+        if (_currentHealth > _maxHealth)
+        {
+            _currentHealth += medkitValue;
+        }
+    }
+
+    public void HandleCoinCollected(float coinValue)
+    {
+        _coins += coinValue;
+    }
 }
