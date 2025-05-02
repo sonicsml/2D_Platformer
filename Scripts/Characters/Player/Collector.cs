@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Collector : MonoBehaviour, IVisitor
@@ -5,7 +6,7 @@ public class Collector : MonoBehaviour, IVisitor
     [SerializeField] Player _player;
 
     public void Visit(MedKit medkit)
-    {
+    { 
         _player.Healing(medkit.Value);
         Debug.Log($"Аптечка собрана.");
     }

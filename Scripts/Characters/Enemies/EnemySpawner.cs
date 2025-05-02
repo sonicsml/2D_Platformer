@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -23,10 +22,5 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(Vector3 position)
     {
         Instantiate(_enemyPrefab, position, Quaternion.identity);
-    }
-
-    private void Destroy()
-    {
-        Debug.Log($"{gameObject} уничтожен");
     }
 }
