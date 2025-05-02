@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         Coin.OnItemCollected -= HandleCoinCollected;
-        MedKit.OnItemCollected += HandleMedkitCollected;
+        MedKit.OnItemCollected -= HandleMedkitCollected;
     }
 
     private void HandleMedkitCollected(float medkitValue)
