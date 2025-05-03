@@ -2,9 +2,11 @@ using System;
 
 public class Coin : BaseItem
 {
-    public static Action<float> OnItemCollected;
+    public event Action<Coin> OnCollectedCoin;
 
-    public void Pickup() {}
-
-    public override void Use() {}
+    protected override void OnAccept(IVisitor visitor)
+    {
+        OnCollectedCoin?.Invoke(this);
+        visitor.Collect(this);
+    }
 }

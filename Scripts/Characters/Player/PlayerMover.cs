@@ -55,7 +55,7 @@ public class PlayerMover : MonoBehaviour
         float moveInput = _inputReader.GetHorizontalInput();
         bool isIdle = Mathf.Abs(moveInput) < 0 && _groundChecker.IsGrounded;
 
-        _playerAnimator.IdleAnimation(isIdle);
+        _playerAnimator.PlayIdleAnimation(isIdle);
     }
     private void Jump()
     {
@@ -67,7 +67,7 @@ public class PlayerMover : MonoBehaviour
         float moveInput = _inputReader.GetHorizontalInput();
         bool isMoving = Math.Abs(moveInput) > 0;
 
-        _playerAnimator.MoveAnimation(isMoving);
+        _playerAnimator.PlayMoveAnimation(isMoving);
         _moveVector = new Vector2(moveInput * _speed, 0f);
         transform.position += (Vector3)_inputReader.Direction * (_speed * Time.deltaTime);
     }

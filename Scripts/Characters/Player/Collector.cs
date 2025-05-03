@@ -4,14 +4,9 @@ public class Collector : MonoBehaviour, IVisitor
 {
     [SerializeField] private Player _player;
 
-    public void Awake()
+    private void Awake()
     {
         _player = GetComponent<Player>();
-    }
-
-    public void Visit(IItem item)
-    {
-        Debug.Log($"Предмет подобран.");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -20,5 +15,17 @@ public class Collector : MonoBehaviour, IVisitor
         {
             collectible.Accept(this);
         }
+    }
+
+    public void Collect(Coin coin)
+    {
+        _player.HandleCoinCollected(coin.Value);
+        Debug.Log($"Гем подобран.");
+    }
+
+    public void Collect(MedKit medkit)
+    {
+        _player.HandleMedkitCollected(medkit.Value);
+        Debug.Log($"Аптечка подобрана.");
     }
 }

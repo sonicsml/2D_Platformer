@@ -20,6 +20,12 @@ public class GroundChecker : MonoBehaviour
         CheckGrounded();
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = IsGrounded ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(transform.position, _groundCheckRadius);
+    }
+
     private void CheckGrounded()
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
@@ -30,11 +36,5 @@ public class GroundChecker : MonoBehaviour
         );
 
         IsGrounded = hitCount > 0;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = IsGrounded ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(transform.position, _groundCheckRadius);
     }
 }

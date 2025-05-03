@@ -151,7 +151,8 @@ MonoBehaviour:
   _spawnPoints:
   - {fileID: 127960568}
   - {fileID: 1974663851}
-  _medKitPrefab: {fileID: 3268812456557533576, guid: 816329f45fd71f1428b4ae68f3454baf, type: 3}
+  _prefabItem: {fileID: 3268812456557533576, guid: 816329f45fd71f1428b4ae68f3454baf, type: 3}
+  _countItemsSpawn: 2
 --- !u!4 &18215287
 Transform:
   m_ObjectHideFlags: 0
@@ -368,8 +369,8 @@ MonoBehaviour:
   - {fileID: 1696767493}
   - {fileID: 477325033}
   - {fileID: 125264000}
-  _enemyPrefab: {fileID: 4484612270466994462, guid: be6e3cd7dfa42b94ea378a79df31fd85, type: 3}
-  _countSpawnEnemy: 3
+  _prefabItem: {fileID: 4484612270466994462, guid: be6e3cd7dfa42b94ea378a79df31fd85, type: 3}
+  _countItemsSpawn: 3
 --- !u!1 &268574775
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,6 +5132,7 @@ GameObject:
   - component: {fileID: 527245263}
   - component: {fileID: 527245264}
   - component: {fileID: 527245266}
+  - component: {fileID: 527245267}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5377,6 +5379,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926f091ac5b11d24690c130bf50129f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &527245267
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527245252}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.04637487}
+  m_Radius: 0.11862514
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

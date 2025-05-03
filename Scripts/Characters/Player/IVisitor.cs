@@ -1,4 +1,5 @@
 public interface IVisitor
 {
-    void Visit(IItem item);
+    void Collect(Coin coin);
+    void Collect(MedKit medkit);
 }

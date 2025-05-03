@@ -4,7 +4,7 @@ public class EnemyAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
-    public void IdleAnimation(bool isIdle)
+    public void PlayIdleAnimation(bool isIdle)
     {
         _animator.SetBool(ParamsMover.Idle, isIdle);
     }

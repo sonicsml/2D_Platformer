@@ -1,18 +1,13 @@
-using System;
 using UnityEngine;
 
-public abstract class BaseItem : MonoBehaviour, IItem
+public abstract class BaseItem : MonoBehaviour, ICollectible
 {
     [SerializeField] private AudioClip _collectSound;
     [field: SerializeField] public float Value { get; private set; } = 1f;
 
-    public static Action<float> OnItemCollected;
-
     public void Accept(IVisitor visitor)
     {
-        visitor.Visit(this);
-        Pickup();
-        gameObject.SetActive(false);
+        OnAccept(visitor);
         PlayCollectSound();
     }
 
@@ -24,11 +19,5 @@ public abstract class BaseItem : MonoBehaviour, IItem
         }
     }
 
-    public void Pickup() 
-    {
-        OnItemCollected?.Invoke(Value);
-        Use();
-    }
-
-    public abstract void Use();
+    protected abstract void OnAccept(IVisitor visitor);
 }

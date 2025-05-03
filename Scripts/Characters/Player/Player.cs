@@ -7,19 +7,7 @@ public class Player : MonoBehaviour
     private float _currentHealth;
     private float _coins = 0;
 
-    private void OnEnable()
-    {
-        Coin.OnItemCollected += HandleCoinCollected;
-        MedKit.OnItemCollected += HandleMedkitCollected;
-    }
-
-    private void OnDisable()
-    {
-        Coin.OnItemCollected -= HandleCoinCollected;
-        MedKit.OnItemCollected -= HandleMedkitCollected;
-    }
-
-    private void HandleMedkitCollected(float medkitValue)
+    public void HandleMedkitCollected(float medkitValue)
     {
         if (_currentHealth > _maxHealth)
         {

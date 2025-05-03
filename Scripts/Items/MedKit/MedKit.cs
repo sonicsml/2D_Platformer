@@ -2,9 +2,11 @@ using System;
 
 public class MedKit : BaseItem
 {
-    public static Action<float> OnItemCollected;
+    public event Action<MedKit> OnCollectedMedkit;
 
-    public void Pickup() {}
-
-    public override void Use() {}
+    protected override void OnAccept(IVisitor visitor)
+    {
+        OnCollectedMedkit?.Invoke(this);
+        visitor.Collect(this);
+    }
 }

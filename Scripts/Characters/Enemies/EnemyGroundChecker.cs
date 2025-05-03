@@ -6,7 +6,7 @@ public class EnemyGroundChecker : MonoBehaviour
     [SerializeField] private float _rayDistance = 0.5f;
     [SerializeField] private BoxCollider2D _collider;
 
-    public bool GroundAhead(LayerMask groundLayer)
+    public bool CheckGroundAhead(LayerMask groundLayer)
     {
         Vector2 direction = Vector2.down;
 

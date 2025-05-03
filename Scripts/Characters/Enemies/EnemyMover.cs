@@ -21,7 +21,7 @@ public class EnemyMover : MonoBehaviour
 
     public void Move()
     {
-        _enemyAnimator.IdleAnimation(_isMoving);
+        _enemyAnimator.PlayIdleAnimation(_isMoving);
         transform.Translate(_speed * Vector3.left * Time.deltaTime);
     }
 

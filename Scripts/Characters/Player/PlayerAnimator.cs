@@ -12,22 +12,22 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
-    public void IdleAnimation(bool isIdle)
+    public void PlayIdleAnimation(bool isIdle)
     {
         _animator.SetBool(ParamsMover.Idle, isIdle);
     }
 
-    public void MoveAnimation(bool isMoving)
+    public void PlayMoveAnimation(bool isMoving)
     {
         _animator.SetBool(ParamsMover.Moving, isMoving);
     }
 
-    public void DieAnimation(bool isDie)
+    public void PlayDieAnimation(bool isDie)
     {
         _animator.SetBool(ParamsMover.Die, isDie);
     }
 
-    public void TakeDamageAnimator(bool isTakeDamage)
+    public void PlayTakeDamageAnimation(bool isTakeDamage)
     {
         _animator.SetBool(ParamsMover.TakeDamage, isTakeDamage);
     }

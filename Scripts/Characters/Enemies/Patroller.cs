@@ -12,7 +12,7 @@ public class Patroller : MonoBehaviour
 
     public void Patrol()
     {
-        if (WallAhaed() || _groundChecker.GroundAhead(_groundLayer))
+        if (WallAhaed() || _groundChecker.CheckGroundAhead(_groundLayer))
         {
             _mover.Rotate();
         }
