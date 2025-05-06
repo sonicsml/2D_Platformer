@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -8,7 +9,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        _currentHealth -= Math.Max(damage,0);
     }
 
     public void Attack (Player player)
