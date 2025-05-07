@@ -6,6 +6,8 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private float _maxHealth = 3;
     [SerializeField] private float _damage = 1;
 
+    public event Action HealthChanged;
+
     private float _currentHealth;
     private float _coins = 0;
 
