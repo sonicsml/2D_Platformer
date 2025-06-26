@@ -33,4 +33,21 @@ public class Player : MonoBehaviour, IDamageable
     {
         enemy.TakeDamage(_damage);
     }
+
+    public float Health 
+        { 
+        get => _currentHealth;
+        set 
+        {
+            if (value >= 0 && value <= _maxHealth)
+            {
+                _currentHealth = value;
+                
+                if (HealthChanged != null)
+                {
+                    HealthChanged.Invoke();
+                }
+            }
+        } 
+    }
 }

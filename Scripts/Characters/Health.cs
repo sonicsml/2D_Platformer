@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int Healthy {  get; private set; }
+    
 /*  [SerializeField] private float _maxHealth;
     [SerializeField] private float _invulnerabilityTime = 1f;
 

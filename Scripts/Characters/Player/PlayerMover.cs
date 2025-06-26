@@ -24,6 +24,7 @@ public class PlayerMover : MonoBehaviour
         _inputReader = GetComponent<InputReader>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         Idle();
